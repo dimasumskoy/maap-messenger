@@ -22,6 +22,7 @@
 
 .byebug_history
 
+.env
 /public/uploads
 /.idea
 /config/database.yml
