@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20180105122720) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.integer "conversations_amount"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
