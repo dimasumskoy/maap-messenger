@@ -1,0 +1,8 @@
+div.col-sm-5.users-list
+  h3 Users
+  - @users.each do |user|
+    ul
+      li
+        span.name= user.name
+        | &nbsp;
+        span.username= user.username
