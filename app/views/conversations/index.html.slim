@@ -1,0 +1,6 @@
+div.col-sm-5.conversations-list
+  h3 Conversations
+  ul.user-conversations
+    - @conversations.each do |conversation|
+      li= link_to "#{current_user.name == conversation.sender_name ? conversation.recipient_name : conversation.sender_name}",
+              conversation_path(conversation)
