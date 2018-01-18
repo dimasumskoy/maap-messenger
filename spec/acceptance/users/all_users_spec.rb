@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'List of users', %q{
+feature 'list of users', %q{
   In order to start conversation
   As a user
   I want to be able to see the list of all users
