@@ -16,15 +16,16 @@ html lang="en"
     .navbar.navbar-default.navbar-static-top
       .container
         button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button"
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand href="#"  Messenger
+        a.navbar-brand href="/"  Messenger
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
-            li= link_to "Link1", "/path1"
-            li= link_to "Link2", "/path2"
-            li= link_to "Link3", "/path3"
+            - if user_signed_in?
+              li= link_to "#{current_user.name}", user_path(current_user)
+              li= link_to "Log out", destroy_user_session_path, method: :delete
+            - else
+              li= link_to "Log in", new_user_session_path
+              li= link_to "Sign up", new_user_registration_path
+
     .container
       p.notice= notice
       p.alert= alert
