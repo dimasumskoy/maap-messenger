@@ -1,0 +1,12 @@
+div.conversation-area
+  div.sender
+  div.recipient
+
+div.navbar-fixed-bottom.message-area
+  div.container
+    div.message-field
+      = form_for [@conversation, @message], html: { class: 'message-form' } do |f|
+        div.form-group
+          p= f.label :body, 'Message'
+          p= f.text_area :body, class: 'form-control message-form-area'
+        p= f.submit 'Send', class: 'btn btn-default'
