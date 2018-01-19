@@ -2,17 +2,12 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = current_user.conversations
+    @conversations = Conversation.for_user(current_user)
   end
 
   def show
-    if @conversation.present?
-      @sender_name    = @conversation.sender_name
-      @recipient_name = @conversation.recipient_name
-      @message        = @conversation.messages.new
-    else
-      create
-    end
+    @conversation = Conversation.get(current_user.name, params[:user])
+    @message = @conversation.messages.new
   end
 
   def create
