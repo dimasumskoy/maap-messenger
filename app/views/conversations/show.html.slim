@@ -1,11 +1,10 @@
 div.conversation-area
-  div.sender
-  div.recipient
+  = render @conversation if @conversation.persisted?
 
 div.navbar-fixed-bottom.message-area
   div.container
     div.message-field
-      = form_for [@conversation, @message], html: { class: 'message-form' } do |f|
+      = form_for [@conversation, @message], html: { class: 'message-form' }, remote: true do |f|
         div.form-group
           p= f.label :body, 'Message'
           p= f.text_area :body, class: 'form-control message-form-area'

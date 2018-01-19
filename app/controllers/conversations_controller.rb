@@ -9,6 +9,7 @@ class ConversationsController < ApplicationController
     if @conversation.present?
       @sender_name    = @conversation.sender_name
       @recipient_name = @conversation.recipient_name
+      @message        = @conversation.messages.new
     else
       create
     end
