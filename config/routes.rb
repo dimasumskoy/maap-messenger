@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     }
 
   resources :users
-  resources :conversations
+  resources :conversations do
+    resources :messages, shallow: true
+  end
 
   root to: 'conversations#index'
 end

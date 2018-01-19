@@ -38,6 +38,7 @@ gem 'dotenv'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'slim-rails'
+gem 'jquery-rails'
 gem 'devise'
 
 group :development, :test do
