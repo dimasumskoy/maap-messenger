@@ -1,3 +1,17 @@
-// Place all the styles related to the Messages controller here.
+// Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message-field {
+  padding-bottom: 2em;
+}
+
+.message-area {
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}
+
+.message-form .message-form-area {
+  height: 100px;
+  resize: none;
+}
