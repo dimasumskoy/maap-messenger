@@ -6,8 +6,8 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.get(current_user.name, params[:user])
-    @message = @conversation.messages.new
+    @conversation = Conversation.get(current_user.name, params[:with])
+    @message      = @conversation.messages.new
   end
 
   def create

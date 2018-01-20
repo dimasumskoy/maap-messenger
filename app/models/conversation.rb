@@ -4,6 +4,8 @@ class Conversation < ApplicationRecord
 
   has_many :messages
 
+  validates :sender_id, uniqueness: { scope: :recipient_id }
+
   def self.get(sender_name, recipient_name)
     where(
       sender_name: sender_name,
