@@ -6,14 +6,17 @@ class Conversation < ApplicationRecord
 
   validates :sender_id, uniqueness: { scope: :recipient_id }
 
-  def self.get(sender_name, recipient_name)
-    where(
-      sender_name: sender_name,
-      recipient_name: recipient_name
-    ).or(
-      where(sender_name: recipient_name,
-            recipient_name: sender_name)
-    ).first
+  scope :between, ->(sender_id, recipient_id) do
+    where(sender_id: sender_id, recipient_id: recipient_id).or(
+      where(sender_id: recipient_id, recipient_id: sender_id)
+    )
+  end
+
+  def self.find_or_create(sender_id, recipient_id)
+    conversation = between(sender_id, recipient_id).first
+    return conversation if conversation
+
+    create(sender_id: sender_id, recipient_id: recipient_id)
   end
 
   def self.for_user(user)

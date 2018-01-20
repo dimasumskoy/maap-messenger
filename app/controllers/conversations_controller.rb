@@ -1,6 +1,5 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_conversation, only: [:show]
 
   def index
     if current_user
@@ -11,16 +10,12 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.get(current_user.name, params[:with])
-    @message      = @conversation.messages.new
+    @conversation = Conversation.find(params[:id])
+    @message = @conversation.messages.new
   end
 
   def create
-  end
-
-  private
-
-  def set_conversation
-    @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.find_or_create(current_user.id, params[:user_id])
+    redirect_to @conversation
   end
 end
