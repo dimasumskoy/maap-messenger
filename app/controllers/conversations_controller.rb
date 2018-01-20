@@ -1,8 +1,13 @@
 class ConversationsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.for_user(current_user)
+    if current_user
+      @conversations = Conversation.for_user(current_user)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
