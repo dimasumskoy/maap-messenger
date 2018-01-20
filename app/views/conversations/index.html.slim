@@ -3,4 +3,4 @@ div.col-sm-5.conversations-list
   ul.user-conversations
     - @conversations.each do |conversation|
       li= link_to "#{current_user.name == conversation.sender.name ? conversation.recipient.name : conversation.sender.name}",
-              conversation_path(conversation, user: conversation.opposed(current_user).name)
+              conversation_path(conversation, with: conversation.opposed(current_user).name)
