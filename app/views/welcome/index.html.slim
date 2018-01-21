@@ -1,0 +1,6 @@
+div.col-sm-5.conversations-list
+  h3 Conversations
+  ul.user-conversations
+    - @conversations.each do |conversation|
+      - opposed_user = conversation.opposed(current_user).name
+      li= link_to opposed_user, me_conversation_path(conversation, user_name: opposed_user)
