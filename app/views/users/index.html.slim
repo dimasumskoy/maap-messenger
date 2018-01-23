@@ -1,6 +1,7 @@
 div.col-sm-5.users-list
-  h3 Users
-  ul.list-group
+  h3 users
+  ul.list-group.users
     - @users.each do |user|
-      li.list-group-item
-        = link_to "#{user.name}", user_path(user)
+      li= link_to user_path(user), class: "list-group-item list-group-item-action" do
+        span.name= "#{user.name}"
+        span.username= "#{user.username}"

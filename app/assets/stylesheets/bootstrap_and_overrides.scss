@@ -9,16 +9,16 @@ body {
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 
-.container {
-  width: 940px;
-}
-
 a {
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size: 1.4em;
   font-style: normal;
   font-variant: normal;
   color: #000000;
+}
+
+.container {
+  max-width: 940px;
 }
 
 .navbar-default .navbar-nav > li > a {
