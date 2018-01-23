@@ -6,6 +6,8 @@
 */
 
 body {
+  height: 100%;
+  width: 100%;
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 
@@ -17,12 +19,15 @@ a {
   color: #000000;
 }
 
-.container {
-  max-width: 940px;
-}
-
 .navbar-default .navbar-nav > li > a {
+  padding: 3px;
+  margin: 10px 10px;
   color: #000000;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    border-color: #000000;
+    color: #000000;
+  }
 }
 
 .navbar-nav {
@@ -30,12 +35,25 @@ a {
 }
 
 .chat-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   background: #ffffff;
   padding: 1em;
+  overflow: hidden;
 }
 
 .navbar-default .navbar-brand {
   font-size: 2.5em;
   font-weight: bold;
   color: #000000;
+}
+
+.content-area {
+  margin-top: 120px;
+}
+
+.container {
+  max-width: 940px;
 }

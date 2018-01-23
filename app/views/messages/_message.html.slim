@@ -1,1 +1,2 @@
-p.single-message= message.body
+- unless message.body.nil?
+  div.single-message= message.body

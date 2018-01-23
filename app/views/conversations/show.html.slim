@@ -1,7 +1,8 @@
 div.conversation-area
-  = render @conversation if @conversation.persisted?
+  div.messages
+    = render @conversation.messages if @conversation.persisted?
 
-div.navbar-fixed-bottom.message-area
+footer.navbar-fixed-bottom.message-area
   div.container
     div.message-field
       = form_for [@conversation, @message], html: { class: 'message-form' }, remote: true do |f|

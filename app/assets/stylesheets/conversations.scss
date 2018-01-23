@@ -6,7 +6,6 @@
 .users-list {
   float: none;
   margin: 0 auto;
-  margin-top: 2em;
   min-width: 100%;
   h3 {
     margin-bottom: 2em;
@@ -25,4 +24,14 @@ ul.users {
   .list-group-item {
     border: none;
   }
+}
+
+.conversation-area {
+  padding: 1em;
+  position: absolute;
+  top: 80px;
+  bottom: 235px;
+  left: 0;
+  right: 0;
+  overflow: auto;
 }
