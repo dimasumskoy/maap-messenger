@@ -1,2 +1,3 @@
 - unless message.body.nil?
-  div.single-message= message.body
+  div.single-message id="message-#{message.id}"
+    = message.body
