@@ -12,6 +12,17 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require turbolinks
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+    toLastMessage();
+});
+
+function toLastMessage() {
+    if(window.location.pathname.includes('/me/conversations')) {
+        var messages = document.getElementsByClassName('single-message');
+        var lastMessage = messages[messages.length - 1];
+        document.getElementById(lastMessage.id).scrollIntoView();
+    }
+}
