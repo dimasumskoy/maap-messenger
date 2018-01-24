@@ -1,0 +1,59 @@
+.authentication-block {
+  margin: 15% 0;
+  text-align: center;
+  h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #333333;
+  }
+  form label {
+    display: none;
+  }
+
+  form .form-check label {
+    display: inline-block;
+    margin: 1em 0.3em;
+  }
+
+  form .form-check .form-check-label {
+    font-size: 1.3em;
+    font-weight: normal;
+  }
+
+  form .email, form .password {
+    margin: 0 auto;
+    width: 30%;
+    height: 40px;
+    font-size: 1.2em;
+    color: #333333;
+    margin-bottom: -10px;
+  }
+
+  form .btn-primary {
+    border: none;
+    background: #92000c;
+    padding: 3px 20px;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    &:hover {
+      background: #333333;
+    }
+  }
+
+  a {
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    &:hover {
+      color: #92000c;
+      border-color: #92000c;
+    }
+  }
+
+  a.logo {
+    font-size: 3.5em;
+    text-decoration: none;
+    cursor: default;
+    border: none;
+  }
+}

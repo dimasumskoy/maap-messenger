@@ -5,6 +5,14 @@
   =require twitter-bootstrap-static/sprites
 */
 
+textarea, input {
+  outline: none;
+  box-shadow: none !important;
+  &:focus {
+    border: 1px solid #999999 !important;
+  }
+}
+
 body {
   height: 100%;
   width: 100%;
@@ -22,11 +30,10 @@ a {
 .navbar-default .navbar-nav > li > a {
   padding: 3px;
   margin: 10px 10px;
-  color: #000000;
+  color: #333333;
   border-bottom: 2px solid transparent;
   &:hover {
-    border-color: #000000;
-    color: #000000;
+    border-color: #333333;
   }
 }
 
@@ -44,12 +51,13 @@ a {
   overflow: hidden;
 }
 
-.navbar-default .navbar-brand {
+.navbar-default .navbar-brand,
+a.logo {
   font-size: 2.5em;
   font-weight: bold;
-  color: #000000;
+  color: #333333;
   &:hover {
-    color: #782220;
+    color: #92000c;
   }
 }
 
