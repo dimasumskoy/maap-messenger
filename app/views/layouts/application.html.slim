@@ -16,7 +16,10 @@ html lang="en"
     .navbar.navbar-default.navbar-static-top.chat-navbar
       .container
         a.navbar-brand.chat-brand href="/me"  emichat
-        .navbar-collapse.collapse.navbar-responsive-collapse
+        .navbar-collapse.collapse.navbar-responsive-collapse.header-bar
+          - if @conversation
+            div.opposed-user
+              = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user))
           ul.nav.navbar-nav
             - if user_signed_in?
               li= link_to "users", users_path

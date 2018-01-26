@@ -38,3 +38,16 @@ ul.users {
   right: 0;
   overflow: auto;
 }
+
+.opposed-user {
+  display: inline-block;
+  margin: 0.7em;
+  a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #333333;
+    &:hover {
+      color: #782220;
+    }
+  }
+}
