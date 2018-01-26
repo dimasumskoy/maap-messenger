@@ -17,6 +17,10 @@
 
 $(document).ready(function() {
     toLastMessage();
+
+    $('textarea#message_body').on('keypress', function (e) {
+        if (e.ctrlKey) { $('form .btn').trigger('click'); }
+    })
 });
 
 function toLastMessage() {
