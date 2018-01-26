@@ -25,6 +25,17 @@
   .message-form label {
     display: none;
   }
+
+  .message-form .btn-default {
+    background: #ffffff;
+    color: #333333;
+    border-color: #999999;
+    &:hover {
+      background: #782220;
+      color: #ffffff;
+      border-color: #782220;
+    }
+  }
 }
 
 .message-form .message-form-area {
