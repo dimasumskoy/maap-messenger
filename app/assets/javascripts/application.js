@@ -17,10 +17,8 @@
 
 $(document).ready(function() {
     toLastMessage();
-
-    $('textarea#message_body').on('keypress', function (e) {
-        if (e.ctrlKey) { $('form .btn').trigger('click'); }
-    })
+    sendByEnter();
+    previousMessagesIteration();
 });
 
 function toLastMessage() {
@@ -29,4 +27,31 @@ function toLastMessage() {
         var lastMessage = messages[messages.length - 1];
         document.getElementById(lastMessage.id).scrollIntoView();
     }
+}
+
+function sendByEnter() {
+    $('textarea#message_body').on('keypress', function (e) {
+        if (e.ctrlKey) { $('form .btn').trigger('click'); }
+    })
+}
+
+function previousMessagesIteration() {
+    $('a.previous-messages').on('click', function(e) {
+        e.preventDefault();
+        var conversationId = $(this).data('conversationId');
+        var path = $(this).attr('href');
+        var searchParams = path.substring(path.indexOf('?') + 1);
+        var iteration_value = parseInt(getQueryVariable(searchParams, 'iteration'));
+        var changedHref = path.replace('iteration=' + iteration_value, 'iteration=' + (iteration_value + 1));
+        $(this).attr('href', changedHref);
+    })
+}
+
+function getQueryVariable(path, variable) {
+    var vars = path.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+    }
+    return(false);
 }
