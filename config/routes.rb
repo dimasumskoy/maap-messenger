@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/me', to: 'welcome#index', as: :user_root
   get '/me/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
+  get :messages_portion, to: 'messages#messages_portion'
 
   resources :users
   resources :conversations do

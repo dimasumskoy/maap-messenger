@@ -1,6 +1,13 @@
 div.conversation-area
-  div.messages
-    = render @conversation.messages if @conversation.persisted?
+  div.messages id="conversation-#{@conversation.id}"
+    - range = 20
+    - if @conversation.persisted? && @conversation.messages.size > range
+      = link_to 'show previous',
+              messages_portion_path(conversation_id: @conversation, iteration: 1, range: range),
+              id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true, data: { type: :json }
+      = render @conversation.messages.last(range)
+    - else
+      = render @conversation.messages
 
 footer.navbar-fixed-bottom.message-area
   div.container
