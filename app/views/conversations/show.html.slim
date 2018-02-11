@@ -1,18 +1,14 @@
 div.conversation-area
   div.messages id="conversation-#{@conversation.id}"
-    - range = 20
-    - if @conversation.persisted? && @conversation.messages.size > range
-      = link_to 'show previous',
-              messages_portion_path(conversation_id: @conversation, iteration: 1, range: range),
-              id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true, data: { type: :json }
-      = render @conversation.messages.last(range)
-    - else
-      = render @conversation.messages
+    - if @conversation.persisted?
+      = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
+              data: { type: :json, conversation_id: @conversation.id, range: @range }
+      = render @messages
 
 footer.navbar-fixed-bottom.message-area
   div.container
     div.message-field
-      = form_for [@conversation, @message], html: { class: 'message-form' }, remote: true do |f|
+      = form_for [@conversation, @conversation.messages.new], html: { class: 'message-form' }, remote: true do |f|
         div.form-group
           p= f.label :body, 'Message'
           p= f.text_area :body, class: 'form-control message-form-area', placeholder: "message (ctrl + enter to send)", autofocus: true
