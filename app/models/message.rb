@@ -4,11 +4,8 @@ class Message < ApplicationRecord
 
   validates :body, presence: true
 
-  scope :portion, ->(conversation_id, range, iteration) {
-    conversation = Conversation.find(conversation_id)
-    least_message_id = conversation.messages.least_message_id(range * iteration)
-    conversation.messages.where(['id < ?', least_message_id]).last(range)
+  scope :portion, ->(range, iteration) {
+    least_id = includes(:conversation).last(range * iteration).min.id
+    includes(:conversation).where(['id < ?', least_id]).last(range)
   }
-
-  scope :least_message_id, ->(range) { ids[-(range)..-1].min }
 end
