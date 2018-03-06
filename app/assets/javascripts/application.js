@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(document).ready(function () {
-  var previousMessagesClickCount = 0;
+  let previousMessagesClickCount = 0;
 
   toLastMessage();
   sendByEnter();
@@ -30,8 +30,8 @@ $(document).ready(function () {
 
 function toLastMessage() {
   if (window.location.pathname.includes('/me/conversations')) {
-    var messages = document.getElementsByClassName('single-message');
-    var lastMessage = messages[messages.length - 1];
+    let messages = document.getElementsByClassName('single-message');
+    let lastMessage = messages[messages.length - 1];
     document.getElementById(lastMessage.id).scrollIntoView();
   }
 }
@@ -45,36 +45,13 @@ function sendByEnter() {
 }
 
 function previousMessagesIteration(link, count) {
-  var conversationId = link.data('conversationId');
-  var range = link.data('range');
+  let conversationId = link.data('conversationId');
+  let range = link.data('range');
   $.get({
-    url: '/conversation/messages_portion?conversation_id=' + conversationId + '&iteration=' + count + '&range=' + range,
+    url: `/conversation/messages_portion?conversation_id=${conversationId}&iteration=${count}&range=${range}`,
     data: link.serialize(),
     success: function(response, status, xhr) {
       console.log(response)
     }
   })
 }
-
-// function previousMessagesIteration() {
-//   $('a.previous-messages').on('click', function (e) {
-//     e.preventDefault();
-//     var conversationId = $(this).data('conversationId');
-//     var path = $(this).attr('href');
-//     var searchParams = path.substring(path.indexOf('?') + 1);
-//     var iteration_value = parseInt(getQueryVariable(searchParams, 'iteration'));
-//     var changedHref = path.replace('iteration=' + iteration_value, 'iteration=' + (iteration_value + 1));
-//     $(this).attr('href', changedHref);
-//   })
-// }
-//
-// function getQueryVariable(path, variable) {
-//   var vars = path.split("&");
-//   for (var i = 0; i < vars.length; i++) {
-//     var pair = vars[i].split("=");
-//     if (pair[0] == variable) {
-//       return pair[1];
-//     }
-//   }
-//   return (false);
-// }
