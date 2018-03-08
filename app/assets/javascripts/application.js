@@ -25,27 +25,8 @@ $(function () {
     e.preventDefault();
     previousMessagesClickCount += 1;
     previousMessagesIteration($(this), previousMessagesClickCount);
-    $('div.messages').prepend($(this));
-  })
+  });
 });
-
-const previousMessagesIteration = (link, count) => {
-  let conversationId = link.data('conversationId');
-  let range = link.data('range');
-  let conversationField = $('div#conversation-' + conversationId);
-  let previousMessagesLink = $('a.previous-messages');
-  $.get({
-    url: `/conversation/messages_portion?conversation_id=${conversationId}&iteration=${count}&range=${range}`,
-    data: link.serialize(),
-    success: function (response, status, xhr) {
-      let messages = response.reverse();
-      $.each(messages, function (index, message) {
-        insertSingleMessage(message, conversationField);
-        conversationField.prepend(previousMessagesLink);
-      });
-    }
-  })
-};
 
 const toLastMessage = () => {
   if (window.location.pathname.includes('/me/conversations')) {
@@ -63,13 +44,29 @@ const sendByEnter = () => {
   })
 };
 
-const insertSingleMessage = (message, area) => {
-  area.prepend(
-    `<div class="single-message" id="message-${message.id}">
-        <div class="sender-name">
-            <a href="/users/${message.user_id}">${message.user_username}</a>
-        </div>
-        <p class="message-body">${message.body}</p>
-    </div>`
-  );
-};
+function previousMessagesIteration(link, count) {
+  let conversationId = link.data('conversationId');
+  let range = link.data('range');
+  let conversationField = $(`div#conversation-${conversationId}`);
+  let previousMessagesLink = $('a.previous-messages');
+  $.get({
+    url: `/conversation/messages_portion?conversation_id=${conversationId}&iteration=${count}&range=${range}`,
+    data: link.serialize(),
+    success: function (response, status, xhr) {
+      let messages = response.reverse();
+      $.each(messages, function (index, message) {
+        conversationField.prepend(insertSingleMessage(message));
+      });
+      conversationField.prepend(previousMessagesLink);
+    }
+  })
+}
+
+function insertSingleMessage(message) {
+  return `<div class="single-message" id="message-${message.id}">
+            <div class="sender-name">
+              <a href="/users/${message.user_id}">${message.user_username}</a>
+            </div>
+              <p class="message-body">${message.body}</p>
+          </div>`
+}
