@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
   before_action :set_conversation
 
+  respond_to :js
+
   def create
-    @message = @conversation.messages.create(message_params.merge(user: current_user))
+    respond_with(@message = @conversation.messages.create(message_params.merge(user: current_user)))
   end
 
   private
