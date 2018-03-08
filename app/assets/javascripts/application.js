@@ -55,14 +55,14 @@ function previousMessagesIteration(link, count) {
     success: function (response, status, xhr) {
       let messages = response.reverse();
       $.each(messages, function (index, message) {
-        conversationField.prepend(insertSingleMessage(message));
+        conversationField.prepend(singleMessage(message));
       });
       conversationField.prepend(previousMessagesLink);
     }
   })
 }
 
-function insertSingleMessage(message) {
+function singleMessage(message) {
   return `<div class="single-message" id="message-${message.id}">
             <div class="sender-name">
               <a href="/users/${message.user_id}">${message.user_username}</a>
