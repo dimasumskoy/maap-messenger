@@ -1,8 +1,9 @@
 div.conversation-area
   div.messages id="conversation-#{@conversation.id}"
-    - if @conversation.persisted?
-      = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
-              data: { type: :json, conversation_id: @conversation.id, range: @range }
+    - if @conversation.persisted? && @messages.any?
+      - if @messages.size >= @range
+        = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
+                data: { type: :json, conversation_id: @conversation.id, range: @range }
       = render @messages
 
 footer.navbar-fixed-bottom.message-area

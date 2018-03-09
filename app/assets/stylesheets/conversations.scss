@@ -37,6 +37,17 @@ ul.users {
   left: 0;
   right: 0;
   overflow: auto;
+  a.previous-messages {
+    display: block;
+    padding: 0.5em;
+    color: #acacac;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+      background: #f5f5f5;
+      color: #782220;
+    }
+  }
 }
 
 .opposed-user {
