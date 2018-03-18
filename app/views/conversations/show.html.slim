@@ -1,5 +1,5 @@
-div.conversation-area
-  div.messages id="conversation-#{@conversation.id}"
+.conversation-area
+  .messages id="conversation-#{@conversation.id}"
     - if @conversation.persisted? && @messages.any?
       - if @messages.size >= @range
         = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
@@ -7,11 +7,5 @@ div.conversation-area
       = render @messages
 
 footer.navbar-fixed-bottom.message-area
-  div.container
-    div.message-field
-      = form_for [@conversation, @conversation.messages.new], html: { class: 'message-form' } do |f|
-        div.form-group
-          p= f.label :body, 'Message'
-          p= f.text_area :body, class: 'form-control message-form-area', placeholder: 'message (ctrl + enter to send)', autofocus: true
-        p= button_tag class: 'btn btn-default message-button' do
-          i.fa.fa-chevron-right
+  .container
+    = render 'messages/form', conversation: @conversation

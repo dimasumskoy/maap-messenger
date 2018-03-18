@@ -32,10 +32,13 @@ $(function () {
     let form = $(this);
     let messageBody = form.serialize();
     $.post(form.attr('action'), messageBody, function (data) {
-      let conversationId = data.conversation_id;
-      $(`div#conversation-${conversationId}`).append(singleMessage(data));
-      $('form#new_message textarea').val('');
-      document.getElementById(`message-${data.id}`).scrollIntoView();
+      if (data.body === '') {
+        $('textarea#message_body').focus();
+      } else {
+        $(`div#conversation-${data.conversation_id}`).append(singleMessage(data));
+        $('form#new_message textarea').val('');
+        document.getElementById(`message-${data.id}`).scrollIntoView();
+      }
     })
   })
 });
