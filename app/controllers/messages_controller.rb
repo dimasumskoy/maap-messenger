@@ -1,10 +1,9 @@
 class MessagesController < ApplicationController
   before_action :set_conversation
 
-  respond_to :js
-
   def create
-    respond_with(@message = @conversation.messages.create(message_params.merge(user: current_user)))
+    @message = @conversation.messages.create(message_params.merge(user: current_user))
+    render json: @message if @message
   end
 
   private

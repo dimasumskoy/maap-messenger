@@ -9,7 +9,7 @@ div.conversation-area
 footer.navbar-fixed-bottom.message-area
   div.container
     div.message-field
-      = form_for [@conversation, @conversation.messages.new], html: { class: 'message-form' }, remote: true do |f|
+      = form_for [@conversation, @conversation.messages.new], html: { class: 'message-form' } do |f|
         div.form-group
           p= f.label :body, 'Message'
           p= f.text_area :body, class: 'form-control message-form-area', placeholder: 'message (ctrl + enter to send)', autofocus: true

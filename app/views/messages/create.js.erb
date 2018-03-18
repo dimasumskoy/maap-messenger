@@ -1,5 +1,0 @@
-$(function () {
-    $('div.conversation-area div.messages').append('<%= j render @message %>');
-    $('form#new_message textarea').val('');
-    document.getElementById('message-<%= @message.id %>').scrollIntoView();
-})
