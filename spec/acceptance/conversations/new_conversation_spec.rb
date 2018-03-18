@@ -13,7 +13,6 @@ feature 'new conversation', %q{
   scenario 'authenticated user starts a conversation' do
     sign_in(user1)
 
-    expect(page).to have_content 'Signed in successfully.'
     expect(page).to have_current_path '/me'
 
     click_on user2.name

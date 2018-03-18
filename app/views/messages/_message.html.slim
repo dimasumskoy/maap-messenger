@@ -2,4 +2,5 @@
   div.single-message id="message-#{message.id}"
     div.sender-name
       = link_to message.user.username, user_path(message.user)
-    p.message-body= message.body
+    p.message-body
+      = message.body

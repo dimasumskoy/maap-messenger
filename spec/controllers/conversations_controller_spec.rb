@@ -28,10 +28,6 @@ RSpec.describe ConversationsController, type: :controller do
       expect(assigns(:conversation)).to eq conversation
     end
 
-    it 'assigns a new message' do
-      expect(assigns(:message)).to be_a_new(Message)
-    end
-
     it 'renders show view' do
       expect(response).to render_template :show
     end

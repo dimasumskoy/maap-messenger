@@ -12,5 +12,6 @@ footer.navbar-fixed-bottom.message-area
       = form_for [@conversation, @conversation.messages.new], html: { class: 'message-form' }, remote: true do |f|
         div.form-group
           p= f.label :body, 'Message'
-          p= f.text_area :body, class: 'form-control message-form-area', placeholder: "message (ctrl + enter to send)", autofocus: true
-        p= f.submit 'Send', class: 'btn btn-default'
+          p= f.text_area :body, class: 'form-control message-form-area', placeholder: 'message (ctrl + enter to send)', autofocus: true
+        p= button_tag class: 'btn btn-default message-button' do
+          i.fa.fa-chevron-right

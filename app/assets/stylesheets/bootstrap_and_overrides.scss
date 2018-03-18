@@ -27,6 +27,10 @@ a {
   color: #000000;
 }
 
+.content {
+  margin-top: 80px;
+}
+
 .navbar-default .navbar-nav > li > a {
   padding: 3px;
   margin: 10px 10px;
@@ -46,9 +50,11 @@ a {
   top: 0;
   left: 0;
   right: 0;
+  height: 80px;
   background: #ffffff;
   padding: 1em;
   overflow: hidden;
+  margin: 0;
 }
 
 .navbar-default .navbar-brand,
@@ -67,4 +73,23 @@ a.logo {
 
 .container {
   max-width: 940px;
+}
+
+@media (max-width: 960px) {
+  .chat-navbar {
+    height: 4em;
+    padding: 0;
+  }
+  .message-area {
+    padding-top: 0 !important;
+    height: 5em;
+    textarea {
+      height: 3em !important;
+    }
+  }
+  .conversation-area {
+    top: 4em !important;
+    bottom: 5em !important;
+    padding: 0 10%;
+  }
 }
