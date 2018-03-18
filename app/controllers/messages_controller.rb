@@ -3,7 +3,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.create(message_params.merge(user: current_user))
-    render json: @message if @message
+    if @message.save
+      render json: @message
+    else
+      render json: @message, status: 422, serializer: ActiveModel::Serializer::ErrorSerializer
+    end
   end
 
   private
