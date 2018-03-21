@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :messages
 
   validates :name, presence: true
+
+  def owner_of?(message)
+    self.messages.find_by(id: message.id) ? true : false
+  end
 end

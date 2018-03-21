@@ -5,30 +5,32 @@ html lang="en"
     meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" /
     meta content="width=device-width, initial-scale=1.0" name="viewport" /
     title= content_for?(:title) ? yield(:title) : "Messenger"
+    = Gon::Base.render_data
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
-    /! Le HTML5 shim, for IE6-8 support of HTML elements
-    /![if lt IE 9]
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+    = javascript_include_tag "https://use.fontawesome.com/releases/v5.0.8/js/all.js", defer: true
+        /! Le HTML5 shim, for IE6-8 support of HTML elements
+        /![if lt IE 9]
 
   body
-    .navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-static-top.chat-navbar
       .container
-        a.navbar-brand href="/"  Messenger
-        .navbar-collapse.collapse.navbar-responsive-collapse
+        a.navbar-brand.chat-brand href="/me" emichat
+        .navbar-collapse.collapse.navbar-responsive-collapse.header-bar
+          - if @conversation
+            div.opposed-user
+              = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user))
           ul.nav.navbar-nav
             - if user_signed_in?
-              li= link_to "#{current_user.name}", user_path(current_user)
-              li= link_to "Log out", destroy_user_session_path, method: :delete
+              li= link_to "users", users_path
+              li= link_to "#{current_user.username}", user_path(current_user)
+              li= link_to "log out", destroy_user_session_path, method: :delete
             - else
-              li= link_to "Log in", new_user_session_path
-              li= link_to "Sign up", new_user_registration_path
-            li= link_to "Users", users_path
+              li= link_to "log in", new_user_session_path
+              li= link_to "sign up", new_user_registration_path
 
-    .container
+    .container.content
       .row
-        = bootstrap_flash
         = yield
-
-      footer

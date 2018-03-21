@@ -1,1 +1,6 @@
-p.single-message= message.body
+- unless message.body.nil?
+  div.single-message id="message-#{message.id}"
+    div.sender-name
+      = link_to message.user.username, user_path(message.user)
+    p.message-body
+      = message.body

@@ -1,11 +1,11 @@
-div.conversation-area
-  = render @conversation if @conversation.persisted?
+.conversation-area
+  .messages id="conversation-#{@conversation.id}"
+    - if @conversation.persisted? && @messages.any?
+      - if @messages.size >= @range
+        = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
+                data: { type: :json, conversation_id: @conversation.id, range: @range }
+      = render @messages
 
-div.navbar-fixed-bottom.message-area
-  div.container
-    div.message-field
-      = form_for [@conversation, @message], html: { class: 'message-form' }, remote: true do |f|
-        div.form-group
-          p= f.label :body, 'Message'
-          p= f.text_area :body, class: 'form-control message-form-area'
-        p= f.submit 'Send', class: 'btn btn-default'
+footer.navbar-fixed-bottom.message-area
+  .container
+    = render 'messages/form', conversation: @conversation

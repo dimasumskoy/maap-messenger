@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'welcome#index'
+
   devise_for :users,
     controllers: { registrations: 'users/registrations' },
     path: '/',
@@ -9,10 +11,15 @@ Rails.application.routes.draw do
       sign_out:     'logout'
     }
 
+  get '/me', to: 'welcome#index', as: :user_root
+  get '/me/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
+
   resources :users
   resources :conversations do
     resources :messages, shallow: true
   end
 
-  root to: 'conversations#index'
+  namespace :conversation do
+    get :messages_portion, to: 'messages#messages_portion'
+  end
 end
