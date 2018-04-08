@@ -5,32 +5,33 @@ html lang="en"
     meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" /
     meta content="width=device-width, initial-scale=1.0" name="viewport" /
     title= content_for?(:title) ? yield(:title) : "Messenger"
-    = Gon::Base.render_data
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
     = javascript_include_tag "https://use.fontawesome.com/releases/v5.0.8/js/all.js", defer: true
-        /! Le HTML5 shim, for IE6-8 support of HTML elements
-        /![if lt IE 9]
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+      /![if lt IE 9]
 
   body
-    .navbar.navbar-default.navbar-static-top.chat-navbar
+    nav.navbar.navbar-default.chat-navbar
       .container
-        a.navbar-brand.chat-brand href="/me" emichat
-        .navbar-collapse.collapse.navbar-responsive-collapse.header-bar
+        .navbar-header
+          button.navbar-toggle[type="button" data-toggle="collapse" data-target="#myNavbar"]
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.chat-brand href="/me" emichat
           - if @conversation
             div.opposed-user
               = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user))
-          ul.nav.navbar-nav
-            - if user_signed_in?
-              li= link_to "users", users_path
-              li= link_to "#{current_user.username}", user_path(current_user)
-              li= link_to "log out", destroy_user_session_path, method: :delete
-            - else
-              li= link_to "log in", new_user_session_path
-              li= link_to "sign up", new_user_registration_path
+        #myNavbar.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right.navbar-chat-menu
+            li= link_to "users", users_path
+            li= link_to "#{current_user.username}", user_path(current_user), data: { user_id: current_user.id }, class: 'user-profile'
+            li= link_to "log out", destroy_user_session_path, method: :delete
 
     .container.content
-      .row
+      = render 'shared/user_profile', user: current_user
+      .row.page-content
         = yield

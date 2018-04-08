@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(function () {
@@ -40,7 +40,21 @@ $(function () {
         document.getElementById(`message-${data.id}`).scrollIntoView();
       }
     })
+  });
+
+  $('a.user-profile').on('click', function (e) {
+    e.preventDefault();
+    let userId = $(this).data('userId');
+    $(`#user-${userId}-profile`).toggle();
+    $('.page-content').toggle();
   })
+
+  // $('a.user-profile').on('click', function(e) {
+  //   e.preventDefault();
+  //   $.get($(this).attr('href'), function (data) {
+  //     console.log(data);
+  //   }, 'json');
+  // })
 });
 
 const toLastMessage = () => {
@@ -75,6 +89,10 @@ function previousMessagesIteration(link, count) {
       conversationField.prepend(previousMessagesLink);
     }
   })
+}
+
+function showUserData (user) {
+
 }
 
 function singleMessage(message) {

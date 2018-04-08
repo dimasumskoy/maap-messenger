@@ -1,70 +1,42 @@
-/*
-  =require twitter-bootstrap-static/bootstrap
-
-  Static version of css will use Glyphicons sprites by default
-  =require twitter-bootstrap-static/sprites
-*/
-
-textarea, input {
-  outline: none;
-  box-shadow: none !important;
-  &:focus {
-    border: 1px solid #999999 !important;
+.navbar {
+  .container {
+    padding: 15px;
+    .chat-brand {
+      font-size: 250%;
+      font-weight: bold;
+      color: #333333;
+      &:hover {
+        color: #730E15;
+      }
+    }
+    .navbar-header {
+      button.navbar-toggle {
+        border-color: #ffffff !important;
+      }
+    }
   }
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-}
-
-a {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-size: 1.4em;
-  font-style: normal;
-  font-variant: normal;
-  color: #000000;
-}
-
-.content {
-  margin-top: 80px;
-}
-
-.navbar-default .navbar-nav > li > a {
-  padding: 3px;
-  margin: 10px 10px;
-  color: #333333;
-  border-bottom: 2px solid transparent;
-  &:hover {
-    border-color: #333333;
+  .navbar-chat-menu {
+    margin-top: 10px;
+    li {
+      a {
+        border-radius: 3px;
+        padding: 8px 15px;
+        &:hover {
+          background: #eeeeee;
+          color: #730E15;
+        }
+      }
+    }
   }
-}
-
-.navbar-nav {
-  float: right;
 }
 
 .chat-navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
   background: #ffffff;
-  padding: 1em;
-  overflow: hidden;
-  margin: 0;
+  z-index: 10;
 }
 
-.navbar-default .navbar-brand,
-a.logo {
-  font-size: 2.5em;
-  font-weight: bold;
-  color: #333333;
-  &:hover {
-    color: #92000c;
-  }
+.page-content {
+  display: block;
 }
 
 .content-area {
@@ -76,10 +48,6 @@ a.logo {
 }
 
 @media (max-width: 960px) {
-  .chat-navbar {
-    height: 4em;
-    padding: 0;
-  }
   .message-area {
     padding-top: 0 !important;
     height: 5em;

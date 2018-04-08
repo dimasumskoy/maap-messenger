@@ -13,8 +13,6 @@ gem 'rails', '~> 5.1.4'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -37,15 +35,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'dotenv'
 gem 'therubyracer'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap-sass'
+gem 'sass-rails', '>= 3.2'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'responders'
-gem 'sprockets', '>= 3.0.0'
-gem 'sprockets-es6'
 gem 'gon'
 
 group :development, :test do
