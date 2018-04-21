@@ -100,6 +100,6 @@ function singleMessage(message) {
             <div class="sender-name">
               <a href="/users/${message.user_id}">${message.user_username}</a>
             </div>
-              <p class="message-body">${message.body}</p>
+              <p class="message-body current-user-message">${message.body}</p>
           </div>`
 }
