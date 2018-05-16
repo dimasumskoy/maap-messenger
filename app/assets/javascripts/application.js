@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(function () {
@@ -40,7 +40,21 @@ $(function () {
         document.getElementById(`message-${data.id}`).scrollIntoView();
       }
     })
+  });
+
+  $('a.user-profile').on('click', function (e) {
+    e.preventDefault();
+    let userId = $(this).data('userId');
+    $(`#user-${userId}-profile`).toggle();
+    $('.page-content').toggle();
   })
+
+  // $('a.user-profile').on('click', function(e) {
+  //   e.preventDefault();
+  //   $.get($(this).attr('href'), function (data) {
+  //     console.log(data);
+  //   }, 'json');
+  // })
 });
 
 const toLastMessage = () => {
@@ -77,11 +91,15 @@ function previousMessagesIteration(link, count) {
   })
 }
 
+function showUserData (user) {
+
+}
+
 function singleMessage(message) {
   return `<div class="single-message" id="message-${message.id}">
             <div class="sender-name">
               <a href="/users/${message.user_id}">${message.user_username}</a>
             </div>
-              <p class="message-body">${message.body}</p>
+              <p class="message-body current-user-message">${message.body}</p>
           </div>`
 }

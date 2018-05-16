@@ -2,5 +2,9 @@
   div.single-message id="message-#{message.id}"
     div.sender-name
       = link_to message.user.username, user_path(message.user)
-    p.message-body
-      = message.body
+    - if current_user.owner_of?(message)
+      p.message-body.current-user-message
+        = message.body
+    - else
+      p.message-body.opposed-user-message
+        = message.body

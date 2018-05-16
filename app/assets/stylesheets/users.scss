@@ -1,9 +1,27 @@
 // Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.scss.
+// They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a span.username {
-  color: #999999;
-  margin-left: 5px;
-  font-size: 80%;
+.users-list,
+.user-profile {
+  span.username {
+    color: #999999;
+    margin-left: 5px;
+    font-size: 80%;
+  }
+}
+
+.user-profile {
+  width: 100%;
+  display: none;
+  padding: 3% 0;
+  z-index: 10;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 3%;
+    font-size: 200%;
+  }
+  p {
+    font-size: 170%;
+  }
 }

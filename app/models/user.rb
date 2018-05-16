@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def owner_of?(message)
-    self.messages.find_by(id: message.id) ? true : false
+    id == message.user_id
   end
 end
