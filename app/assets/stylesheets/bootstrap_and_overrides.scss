@@ -46,18 +46,3 @@
 .container {
   max-width: 940px;
 }
-
-@media (max-width: 960px) {
-  .message-area {
-    padding-top: 0 !important;
-    height: 5em;
-    textarea {
-      height: 3em !important;
-    }
-  }
-  .conversation-area {
-    top: 4em !important;
-    bottom: 5em !important;
-    padding: 0 10%;
-  }
-}

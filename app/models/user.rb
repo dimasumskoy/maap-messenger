@@ -1,13 +1,13 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :conversations, foreign_key: :sender_id
   has_many :messages
 
-  validates :name, presence: true
+  validates :name, :username, :email, presence: true
+
+  before_validation { |record| record.username ||= "@#{self.name.underscore.gsub(/\s+/, '')}" }
 
   def owner_of?(message)
     id == message.user_id

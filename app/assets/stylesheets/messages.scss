@@ -71,10 +71,11 @@
   font-size: 1.3em;
   color: #333333;
 
-  div.sender-name {
+  .sender-name {
     position: absolute;
     display: inline-block;
     width: 150px;
+    top: 5px;
     left: -9em;
     text-align: right;
 
