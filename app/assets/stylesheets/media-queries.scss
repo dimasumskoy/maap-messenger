@@ -1,0 +1,36 @@
+// media queries for all stylesheet components
+
+@media (max-width: 960px) {
+  .message-area {
+    padding-top: 0 !important;
+    height: 5em;
+    textarea {
+      height: 3em !important;
+    }
+  }
+  .conversation-area {
+    bottom: 5em !important;
+    padding: 0 10%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .conversation-area {
+    max-width: 100%;
+    padding: 15px;
+    .messages {
+      padding: 0;
+    }
+  }
+  .single-message {
+    margin-left: 0;
+    .sender-name {
+      display: none;
+    }
+  }
+  .authentication-block {
+    form .custom-fields {
+      width: 80%;
+    }
+  }
+}
