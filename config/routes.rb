@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   namespace :conversation do
     get :messages_portion, to: 'messages#messages_portion'
   end
+
+  mount ActionCable.server => '/cable'
 end

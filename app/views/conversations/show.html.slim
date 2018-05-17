@@ -1,5 +1,5 @@
 .conversation-area
-  .messages id="conversation-#{@conversation.id}"
+  .messages[id="conversation-#{@conversation.id}" data-conversation-id="#{@conversation.id}"]
     - if @conversation.persisted? && @messages.any?
       - if @messages.size >= @range
         = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,

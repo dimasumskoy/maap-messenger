@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_conversation
+  after_action  :stream_message, only: [:create]
 
   def create
     @message = @conversation.messages.create(message_params.merge(user: current_user))
@@ -18,5 +19,11 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body)
+  end
+
+  def stream_message
+    return if @message.errors.any?
+    MessagesChannel.broadcast_to @conversation,
+      MessageSerializer.new(@message).to_json
   end
 end

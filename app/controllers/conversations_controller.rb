@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show]
+  before_action :set_conversation, :save_current_user, only: [:show]
 
   def index
     respond_with(@conversations = Conversation.for_user(current_user))
@@ -18,5 +18,9 @@ class ConversationsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.find(params[:id])
+  end
+
+  def save_current_user
+    gon.current_user = current_user if current_user
   end
 end
