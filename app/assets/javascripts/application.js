@@ -55,6 +55,25 @@ $(function () {
   //     console.log(data);
   //   }, 'json');
   // })
+
+  let conversationId = $('.messages').data('conversationId');
+  App.messages = App.cable.subscriptions.create({
+    channel: "MessagesChannel",
+    conversation_id: conversationId
+  }, {
+    connected: function() {
+      return console.log('OK');
+    },
+    disconnected: function() {},
+    received: function(data) {
+      let message = $.parseJSON(data);
+      if (gon.current_user === void 0 || gon.current_user.id !== message.user_id) {
+        $(`div#conversation-${conversationId}`).append(singleMessage(message));
+        $('form#new_message textarea').val('');
+        return document.getElementById(`message-${message.id}`).scrollIntoView();
+      }
+    }
+  });
 });
 
 const toLastMessage = () => {
