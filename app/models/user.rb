@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :name, :username, :email, presence: true
 
   before_validation { |record| record.username ||= "@#{self.name.underscore.gsub(/\s+/, '')}" }
+  after_save ThinkingSphinx::RealTime.callback_for(:user)
 
   def owner_of?(message)
     id == message.user_id
