@@ -1,6 +1,6 @@
 <h2>log in</h2>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name), inline_errors: false) do |f| %>
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= f.email_field :email, autofocus: true, class: "custom-fields", placeholder: "email" %>
   <%= f.password_field :password, autocomplete: "off", class: "custom-fields", placeholder: "password" %>
 
