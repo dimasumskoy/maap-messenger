@@ -3,13 +3,19 @@
   margin-bottom: auto;
   text-align: center;
   h2 {
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: bold;
     margin-bottom: 0.5em;
+    margin-top: 0.3em;
     color: #333333;
   }
+
   form label {
     display: none;
+  }
+
+  form .checkbox label {
+    display: inline-block;
   }
 
   form .form-check label {
@@ -28,7 +34,6 @@
     height: 40px;
     font-size: 1.2em;
     color: #333333;
-    margin-bottom: -10px;
   }
 
   form .password {
@@ -40,15 +45,10 @@
     background: #92000c;
     padding: 3px 20px;
     font-size: 1.5em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     &:hover {
       background: #333333;
     }
-  }
-
-  form .btn-signup {
-    margin-top: 1em;
   }
 
   a {

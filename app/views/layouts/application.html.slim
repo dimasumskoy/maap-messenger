@@ -36,4 +36,5 @@ html lang="en"
     .container.content
       = render 'shared/user_profile', user: current_user
       .row.page-content
+        = render 'shared/alerts'
         = yield
