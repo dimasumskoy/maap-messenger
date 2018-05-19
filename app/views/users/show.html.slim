@@ -1,16 +1,33 @@
-div.user-info id="user-#{@user.id}"
-  h3.user-name
-  span.name
-    =< "#{@user.name}"
-  span.username
-    = "#{@user.username}"
-  p.user-email
+.user-account-info[id="user-info-#{@user.id}"]
+  h3 your account
+  hr
+  p
+    i.far.fa-user-circle
+    | name:
+    span.user-info-value =< @user.name
+  p
+    i.fas.fa-user-circle
+    | username:
+    span.user-info-value =< @user.username
+  p
+    i.far.fa-envelope
     | email:
-    =< @user.email
-  p.user-mobile
+    span.user-info-value =< @user.email
+  p
+    span.mobile
+      i.fas.fa-mobile-alt
     | mobile:
-    =<
-    p.user- bio
+    span.user-info-value
+  p
+    i.fas.fa-info-circle
     | bio:
-    =< @user.bio
-  p= link_to "Start conversation", conversations_path(user_id: @user.id), method: :post
+    span.user-info-value =< @user.bio
+
+  .actions
+    - if @user.id == current_user.id
+      = link_to edit_user_path(@user), class: 'btn btn-default user-account-link' do
+        i.fas.fa-pencil-alt
+        | edit
+      = link_to user_path(@user), method: :delete, class: 'btn btn-default user-account-link delete-account-link', data: { confirm: 'Are you serious?' } do
+        i.fas.fa-user-times
+        | delete

@@ -10,7 +10,8 @@
   }
 }
 
-.user-profile {
+.user-profile,
+.user-account-info {
   width: 100%;
   display: none;
   padding: 0;
@@ -40,7 +41,8 @@
   .actions {
     margin-top: 2em;
     .user-profile-link,
-    .user-account-link {
+    .user-account-link,
+    .delete-account-link {
       margin-right: 5px;
       border-color: #eeeeee;
       font-size: 1.2em;
@@ -49,5 +51,19 @@
         background-color: #eeeeee;
       }
     }
+    .delete-account-link {
+      background-color: #f8e4e3;
+      border-color: #f8e4e3;
+      &:hover {
+        background-color: #edbcbb;
+        border-color: #edbcbb;
+      }
+    }
   }
+}
+
+.user-account-info {
+  display: block;
+  margin: 0;
+  padding: 0 5px;
 }

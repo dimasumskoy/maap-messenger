@@ -35,8 +35,8 @@ html lang="en"
             li= link_to "log out", destroy_user_session_path, method: :delete
 
     .container.content
-      = render 'shared/user_profile', user: current_user
-      = render 'shared/user_profile', user: @conversation.opposed(current_user) if @conversation
+      = render 'shared/users/user_profile', user: current_user
+      = render 'shared/users/user_profile', user: @conversation.opposed(current_user) if @conversation
       .row.page-content
         = render 'shared/alerts'
         = yield
