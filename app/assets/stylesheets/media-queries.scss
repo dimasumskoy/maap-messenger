@@ -1,5 +1,11 @@
 // media queries for all stylesheet components
 
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 960px) {
   .message-area {
     padding-top: 0 !important;
@@ -31,6 +37,19 @@
   .authentication-block {
     form .custom-fields {
       width: 80%;
+    }
+  }
+  .navbar {
+    .container {
+      width: 100%;
+      padding: 15px;
+      .navbar-brand {
+        line-height: 15px;
+      }
+    }
+    .opposed-user {
+      margin: 0;
+      padding: 12px 0;
     }
   }
 }
