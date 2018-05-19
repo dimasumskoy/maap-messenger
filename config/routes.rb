@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/me', to: 'welcome#index', as: :user_root
   get '/me/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
 
+  resource :search, only: [:show], controller: 'search'
   resources :users
   resources :conversations do
     resources :messages, shallow: true
