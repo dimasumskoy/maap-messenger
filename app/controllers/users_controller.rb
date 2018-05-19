@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   respond_to :json
 
@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_with(@user.update(user_params), flash[:notice] = "Success!", location: @user)
+    respond_with(@user.update(user_params), location: @user)
+  end
+
+  def destroy
+    respond_with(@user.destroy, location: new_user_session_path)
   end
 
   private
