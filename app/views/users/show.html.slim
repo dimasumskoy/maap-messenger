@@ -17,13 +17,13 @@
     span.mobile
       i.fas.fa-mobile-alt
     | mobile:
-    span.user-info-value
+    span.user-info-value =< @user.phone
   p
     i.fas.fa-info-circle
     | bio:
     span.user-info-value =< @user.bio
 
-  .actions
+  .user-actions
     - if @user.id == current_user.id
       = link_to edit_user_path(@user), class: 'btn btn-default user-account-link' do
         i.fas.fa-pencil-alt

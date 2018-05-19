@@ -11,7 +11,8 @@
 }
 
 .user-profile,
-.user-account-info {
+.user-account-info,
+.edit-user-account-info {
   width: 100%;
   display: none;
   padding: 0;
@@ -38,32 +39,61 @@
   svg {
     margin: 0 5px -3px 0;
   }
-  .actions {
-    margin-top: 2em;
-    .user-profile-link,
-    .user-account-link,
-    .delete-account-link {
-      margin-right: 5px;
-      border-color: #eeeeee;
-      font-size: 1.2em;
-      color: #666666;
-      &:hover {
-        background-color: #eeeeee;
-      }
+}
+
+.user-account-info,
+.edit-user-account-info {
+  display: block;
+  margin: 0;
+  padding: 0 5px;
+}
+
+.user-actions {
+  margin-top: 2em;
+  .user-profile-link,
+  .user-account-link,
+  .delete-account-link {
+    margin-right: 5px;
+    border-color: #eeeeee;
+    font-size: 1.2em;
+    color: #666666;
+    &:hover {
+      background-color: #eeeeee;
     }
-    .delete-account-link {
-      background-color: #f8e4e3;
-      border-color: #f8e4e3;
-      &:hover {
-        background-color: #edbcbb;
-        border-color: #edbcbb;
-      }
+  }
+  .delete-account-link {
+    background-color: #f8e4e3;
+    border-color: #f8e4e3;
+    &:hover {
+      background-color: #edbcbb;
+      border-color: #edbcbb;
     }
   }
 }
 
-.user-account-info {
-  display: block;
-  margin: 0;
-  padding: 0 5px;
+.edit-user-account-info {
+  table {
+    td {
+      padding: 5px 10px 10px 0;
+      input {
+        font-size: 1.2em;
+      }
+    }
+  }
+  .save-account-link {
+    background-color: #d5fce5;
+    border-color: #d5fce5;
+    font-size: 1.2em;
+    color: #666666;
+    &:hover {
+      background-color: #b4f9c8;
+    }
+  }
+  .user-actions {
+    margin: 0;
+    .user-account-link {
+      margin: 0;
+      float: right;
+    }
+  }
 }
