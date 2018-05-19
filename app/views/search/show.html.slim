@@ -1,0 +1,7 @@
+.search-results.users-list
+  h3 search results
+  ul.list-group.users
+    - @search_results.each do |found_user|
+      li= link_to user_path(found_user), class: "list-group-item list-group-item-action" do
+        span.name= "#{found_user.name}"
+        span.username= "#{found_user.username}"
