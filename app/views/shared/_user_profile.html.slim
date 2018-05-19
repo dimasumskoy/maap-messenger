@@ -1,15 +1,29 @@
-.container.user-profile[id="user-#{user.id}-profile"]
-  h3.user-name
-    span.name
-      =< "#{user.name}"
-    span.username
-      = "#{user.username}"
-  p.user-email
+.user-profile[id="user-#{user.id}-profile"]
+  h3 info
+  hr
+  / h4.user-name
+  /   span.name
+  /     =< "#{user.name}"
+  /   span.username
+  /     = "#{user.username}"
+  p
+    i.far.fa-user-circle
+    | name:
+    span.user-info-value =< user.name
+  p
+    i.fas.fa-user-circle
+    | username:
+    span.user-info-value =< user.username
+  p
+    i.far.fa-envelope
     | email:
-    =< user.email
-  p.user-mobile
+    span.user-info-value =< user.email
+  p
+    span.mobile
+      i.fas.fa-mobile-alt
     | mobile:
-    =<
-  p.user-bio
+    span.user-info-value =<
+  p
+    i.fas.fa-info-circle
     | bio:
-    =< user.bio
+    span.user-info-value =< user.bio
