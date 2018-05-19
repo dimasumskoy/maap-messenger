@@ -1,0 +1,3 @@
+.search
+  = bootstrap_form_tag url: search_path, method: :get, layout: :horizontal do |f|
+    = f.search_field :search, skip_label: true, placeholder: 'name or @username'

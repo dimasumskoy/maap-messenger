@@ -3,17 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .conversations-list,
-.users-list {
+.users-list,
+.search-results,
+.user-info {
   float: none;
   margin: 0 auto;
   min-width: 100%;
-  padding-top: 1em;
-  h3 {
+  padding: 0;
+  h3, h4 {
     margin-bottom: 2em;
     text-align: center;
     font-size: 2.1em;
     font-weight: bold;
   }
+  h4 {
+    text-align: left;
+    font-size: 1.7em;
+  }
+}
+
+.user-info {
+  padding: 15px;
 }
 
 ul.user-conversations,

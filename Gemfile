@@ -44,6 +44,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'responders'
 gem 'gon'
+gem 'mysql2', '~> 0.4.10'
+gem 'thinking-sphinx', '~> 4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
