@@ -1,5 +1,5 @@
 $(function () {
-  $('a.user-profile-link').on('click', function (e) {
+  $('a.user-profile-link, a.user-profile-back').on('click', function (e) {
     e.preventDefault();
     let userId = $(this).data('userId');
     $(`#user-${userId}-profile`).toggle();

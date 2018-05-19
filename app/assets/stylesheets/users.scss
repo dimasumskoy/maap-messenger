@@ -31,10 +31,23 @@
       color: #333333;
     }
     span.mobile {
-      margin-right: 7px;
+      margin-right: 9px;
     }
   }
   svg {
     margin: 0 5px -3px 0;
+  }
+  .actions {
+    margin-top: 2em;
+    .user-profile-link,
+    .user-account-link {
+      margin-right: 5px;
+      border-color: #eeeeee;
+      font-size: 1.2em;
+      color: #666666;
+      &:hover {
+        background-color: #eeeeee;
+      }
+    }
   }
 }
