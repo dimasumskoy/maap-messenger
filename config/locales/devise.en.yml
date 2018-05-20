@@ -3,7 +3,7 @@
 en:
   devise:
     confirmations:
-      confirmed: "Yay! You can sign in now."
+      confirmed: "You can sign in now."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
@@ -45,7 +45,7 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
-      signed_in: "Welcome!"
+      signed_in: "Heyyy"
       signed_out: "Bye!"
       already_signed_out: "Signed out successfully."
     unlocks:

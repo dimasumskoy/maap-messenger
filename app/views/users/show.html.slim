@@ -31,3 +31,6 @@
       = link_to user_path(@user), method: :delete, class: 'btn btn-default user-account-link delete-account-link', data: { confirm: 'Are you serious?' } do
         i.fas.fa-user-times
         | delete
+    - else
+      = link_to conversations_path(user_id: @user.id), method: :post, class: 'btn btn-default user-account-link' do
+        | conversation

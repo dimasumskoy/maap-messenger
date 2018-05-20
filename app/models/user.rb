@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :messages
 
   validates :name, :username, :email, presence: true
+  validates :username, uniqueness: { case_sensitive: false }
 
   before_validation { |record| record.username ||= "@#{self.name.underscore.gsub(/\s+/, '')}" }
   after_save ThinkingSphinx::RealTime.callback_for(:user)

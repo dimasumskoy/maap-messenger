@@ -5,8 +5,8 @@ en:
         # notice: '%{resource_name} was successfully created.'
         # alert: '%{resource_name} could not be created.'
       update:
-        notice: 'Success!'
+        # notice: 'Updated!'
         # alert: '%{resource_name} could not be updated.'
       destroy:
-        notice: '%{resource_name} was destroyed :('
+        # notice: '%{resource_name} was destroyed :('
         # alert: '%{resource_name} could not be destroyed.'

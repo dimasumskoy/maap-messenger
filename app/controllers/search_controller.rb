@@ -11,5 +11,6 @@ class SearchController < ApplicationController
 
   def set_search_params
     @search = params[:search]
+    @search.gsub!('@', '\\@') if @search.include?('@')
   end
 end
