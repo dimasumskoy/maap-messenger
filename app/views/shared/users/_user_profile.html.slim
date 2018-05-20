@@ -1,0 +1,33 @@
+.user-profile[id="user-#{user.id}-profile"]
+  h3 info
+  hr
+  p
+    i.far.fa-user-circle
+    | name:
+    span.user-info-value =< user.name
+  p
+    i.fas.fa-user-circle
+    | username:
+    span.user-info-value =< user.username
+  p
+    i.far.fa-envelope
+    | email:
+    span.user-info-value =< user.email
+  p
+    span.mobile
+      i.fas.fa-mobile-alt
+    | mobile:
+    span.user-info-value =< user.phone
+  p
+    i.fas.fa-info-circle
+    | bio:
+    span.user-info-value =< user.bio
+
+  .user-actions
+    = link_to '', class: 'btn btn-default user-profile-link user-profile-back', data: { user_id: user.id } do
+      i.fas.fa-long-arrow-alt-left
+      | back
+    - if user.id == current_user.id
+      = link_to user_path(user), class: 'btn btn-default user-account-link' do
+        i.fas.fa-pencil-alt
+        | edit account

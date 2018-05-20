@@ -1,0 +1,42 @@
+.edit-user-account-info[id="edit-user-#{@user.id}"]
+  h3 edit account
+  hr
+  table
+    = form_for @user do |f|
+      tr
+        td
+          p
+            i.far.fa-user-circle
+            | name:
+        td
+          = f.text_field :name, class: 'form-control'
+      tr
+        td
+          p
+            i.fas.fa-user-circle
+            | username:
+        td
+          = f.text_field :username, class: 'form-control'
+      tr
+        td
+          p
+            span.mobile
+              i.fas.fa-mobile-alt
+            | mobile:
+        td
+          = f.text_field :phone, class: 'form-control'
+      tr.bio
+        td
+          p
+            i.fas.fa-info-circle
+            | bio:
+        td
+          = f.text_area :bio, class: 'form-control'
+      tr
+        td
+          .user-actions
+            = link_to user_path(@user), class: 'btn btn-default user-account-link' do
+              i.fas.fa-long-arrow-alt-left
+              | back
+        td
+          = f.submit 'save', class: 'btn btn-default save-account-link'

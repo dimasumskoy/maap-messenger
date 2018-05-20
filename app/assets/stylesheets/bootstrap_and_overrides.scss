@@ -1,6 +1,11 @@
 .navbar {
+  border-top: none;
+  height: auto;
   .container {
-    padding: 15px;
+    padding: 5px;
+    .navbar-brand {
+      line-height: 30px;
+    }
     .chat-brand {
       font-size: 250%;
       font-weight: bold;
@@ -48,4 +53,10 @@
 
 .container {
   max-width: 940px;
+}
+
+.alert-success {
+  background-color: #ffffff;
+  border-color: #eeeeee;
+  color: #333333;
 }

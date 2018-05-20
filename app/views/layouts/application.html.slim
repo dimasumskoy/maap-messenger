@@ -26,16 +26,17 @@ html lang="en"
           a.navbar-brand.chat-brand href="/me" emichat
           - if @conversation
             div.opposed-user
-              = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user))
+              = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user)), class: 'opposed-user-profile-link'
         #myNavbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right.navbar-chat-menu
             li= render 'shared/search_form'
             li= link_to "contacts", users_path
-            li= link_to "#{current_user.username}", user_path(current_user), data: { user_id: current_user.id }, class: 'user-profile'
+            li= link_to "#{current_user.username}", user_path(current_user), data: { user_id: current_user.id }, class: 'user-profile-link'
             li= link_to "log out", destroy_user_session_path, method: :delete
 
     .container.content
-      = render 'shared/user_profile', user: current_user
+      = render 'shared/users/user_profile', user: current_user
+      = render 'shared/users/user_profile', user: @conversation.opposed(current_user) if @conversation
       .row.page-content
         = render 'shared/alerts'
         = yield

@@ -21,7 +21,11 @@ $(function () {
       success: function (response, status, xhr) {
         let messages = response.reverse();
         $.each(messages, function (index, message) {
-          conversationField.prepend(singleMessage(message));
+          if (gon.current_user === void 0 || gon.current_user.id !== message.user_id) {
+            conversationField.prepend(singleMessage(message, 'opposed-user-message'));
+          } else {
+            conversationField.prepend(singleMessage(message, 'current-user-message'));
+          }
         });
         conversationField.prepend(previousMessagesLink);
       }
