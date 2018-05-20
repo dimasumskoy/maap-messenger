@@ -1,10 +1,12 @@
 .conversation-area
-  .messages[id="conversation-#{@conversation.id}" data-conversation-id="#{@conversation.id}"]
-    - if @conversation.persisted? && @messages.any?
-      - if @messages.size >= @range
+  - if @conversation.persisted?
+    .messages[id="conversation-#{@conversation.id}" data-conversation-id="#{@conversation.id}"]
+      - if @conversation.messages_greater_than?(@range)
         = link_to 'show previous', '', id: "previous-messages-#{@conversation.id}", class: "previous-messages", remote: true,
                 data: { type: :json, conversation_id: @conversation.id, range: @range }
-      = render @messages
+        = render @conversation.messages.last(@range)
+      - else
+        = render @conversation.messages
 
 footer.navbar-fixed-bottom.message-area
   .container
