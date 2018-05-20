@@ -6,8 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @range = 20
-    respond_with(@messages = @conversation.messages.size > @range ? @conversation.messages.last(@range) : @conversation.messages)
+    @range = @conversation.standard_range
   end
 
   def create
