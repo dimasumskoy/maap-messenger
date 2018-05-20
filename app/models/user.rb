@@ -16,6 +16,12 @@ class User < ApplicationRecord
   before_validation { |record| record.username ||= "@#{self.name.underscore.gsub(/\s+/, '')}" }
   after_save ThinkingSphinx::RealTime.callback_for(:user)
 
+  def contacts
+    contacts = []
+    conversations.find_each { |c| contacts << c.opposed(self) }
+    contacts
+  end
+
   def owner_of?(message)
     id == message.user_id
   end

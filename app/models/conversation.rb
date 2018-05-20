@@ -21,7 +21,7 @@ class Conversation < ApplicationRecord
       conversation = between(sender_id, recipient_id).first
       return conversation if conversation
 
-      create(sender_id: sender_id, recipient_id: recipient_id)
+      create!(sender_id: sender_id, recipient_id: recipient_id)
     end
 
     def for_user(user)

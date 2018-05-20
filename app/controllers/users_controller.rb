@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   respond_to :json
 
   def index
-    respond_with(@users = User.all)
+    @contacts = Conversation.for_user(current_user).map { |c| c.opposed(current_user) }
   end
 
   def show

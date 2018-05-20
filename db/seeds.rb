@@ -6,6 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+admin = User.find_by(email: 'admin@test.com')
+unless admin
+  user = User.new(
+    name: 'admin',
+    email: 'admin@test.com',
+    password: '123456',
+    password_confirmation: '123456'
+  )
+  user.confirm
+  user.save!
+end
+
 5.times do |i|
-  User.create(name: "user#{i}")
+  user = User.new(
+    name: "user#{i}",
+    email: "user#{i}@test.com",
+    password: "123456",
+    password_confirmation: "123456"
+  )
+  user.confirm
+  user.save!
 end

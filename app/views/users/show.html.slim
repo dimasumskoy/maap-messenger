@@ -1,5 +1,8 @@
 .user-account-info[id="user-info-#{@user.id}"]
-  h3 your account
+  - if @user.id == current_user.id
+    h3 your account
+  - else
+    h3 info
   hr
   p
     i.far.fa-user-circle
