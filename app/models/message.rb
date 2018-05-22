@@ -1,7 +1,10 @@
 class Message < ApplicationRecord
+  attr_encrypted :body, type: :string, random_iv: true
+
   belongs_to :user
   belongs_to :conversation, touch: true
 
+  validates :encrypted_body, symmetric_encryption: true
   validates :body, presence: true
 
   scope :portion, ->(range, iteration) {
