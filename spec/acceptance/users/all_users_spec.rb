@@ -9,7 +9,7 @@ feature 'list of users', %q{
   given(:user) { create(:user) }
   given!(:users) { create_list(:user, 5) }
 
-  scenario 'User can see the list of other users' do
+  pending 'User can see the list of other users' do
     sign_in(user)
 
     visit users_path
