@@ -46,6 +46,7 @@ gem 'responders'
 gem 'gon'
 gem 'mysql2', '~> 0.4.10'
 gem 'thinking-sphinx', '~> 4.0'
+gem 'symmetric-encryption'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -56,6 +57,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
+  gem 'pry-rails'
 end
 
 group :development do
