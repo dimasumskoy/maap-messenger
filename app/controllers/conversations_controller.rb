@@ -7,10 +7,14 @@ class ConversationsController < ApplicationController
 
   def show
     @range = @conversation.standard_range
+    respond_with(@conversation)
   end
 
   def create
-    respond_with(@conversation = Conversation.find_or_create(current_user.id, params[:user_id]))
+    respond_with(
+      @conversation = Conversation.find_or_create(current_user.id, params[:user_id]),
+      location: me_conversation_path(@conversation, user_name: @conversation.opposed(current_user).username)
+    )
   end
 
   private

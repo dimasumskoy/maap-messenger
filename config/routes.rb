@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  root to: 'conversations#index'
 
   devise_for :users,
     controllers: { registrations: 'users/registrations' },
@@ -11,8 +11,9 @@ Rails.application.routes.draw do
       sign_out:     'logout'
     }
 
-  get '/me', to: 'welcome#index', as: :user_root
-  get '/me/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
+  get '/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
+  get '/contacts', to: 'users#index', as: :me_contacts
+  get '/contacts/:id', to: 'users#show', as: :me_contact
 
   resource :search, only: [:show], controller: 'search'
   resources :users
