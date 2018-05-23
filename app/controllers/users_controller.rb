@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   respond_to :json
 
   def index
-    @contacts = Conversation.for_user(current_user).map { |c| c.opposed(current_user) }
+    @contacts = current_user.contacts
   end
 
   def show
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_with(@user.update(user_params), location: @user)
+    respond_with(@user.update(user_params), location: me_profile_path(@user, user_name: @user.username))
   end
 
   def destroy

@@ -4,11 +4,22 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :conversation, touch: true
 
+  validates :body, :encrypted_body, :conversation_id, :user_id, presence: true
   validates :encrypted_body, symmetric_encryption: true
-  validates :body, presence: true
 
+  after_create_commit :stream_message
+
+  scope :ordered, -> { order(created_at: :asc) }
   scope :portion, ->(range, iteration) {
     least_id = includes(:conversation).last(range * iteration).min.id
     includes(:conversation).where(['id < ?', least_id]).last(range)
   }
+
+  private
+
+  def stream_message
+    return if self.errors.any?
+    MessagesChannel.broadcast_to conversation,
+      MessageSerializer.new(self).to_json
+  end
 end

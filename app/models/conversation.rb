@@ -8,25 +8,21 @@ class Conversation < ApplicationRecord
 
   has_many :messages
 
+  validates :sender_id, :recipient_id, presence: true
   validates :sender_id, uniqueness: { scope: :recipient_id }
 
+  scope :for_user, ->(user) { where(sender: user).or(where(recipient: user)) }
   scope :between, ->(sender_id, recipient_id) do
     where(sender_id: sender_id, recipient_id: recipient_id).or(
       where(sender_id: recipient_id, recipient_id: sender_id)
     )
   end
 
-  class << self
-    def find_or_create(sender_id, recipient_id)
-      conversation = between(sender_id, recipient_id).first
-      return conversation if conversation
+  def self.find_or_create(sender_id, recipient_id)
+    conversation = between(sender_id, recipient_id).first
+    return conversation if conversation
 
-      create!(sender_id: sender_id, recipient_id: recipient_id)
-    end
-
-    def for_user(user)
-      where(sender: user).or(where(recipient: user))
-    end
+    create!(sender_id: sender_id, recipient_id: recipient_id)
   end
 
   def opposed(user)
@@ -34,6 +30,7 @@ class Conversation < ApplicationRecord
   end
 
   def messages_greater_than?(amount)
-    true if messages.size > amount
+    return true if messages.size > amount
+    false
   end
 end

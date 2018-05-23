@@ -17,9 +17,7 @@ class User < ApplicationRecord
   after_save ThinkingSphinx::RealTime.callback_for(:user)
 
   def contacts
-    contacts = []
-    conversations.find_each { |c| contacts << c.opposed(self) }
-    contacts
+    conversations.for_user(self).map { |c| c.opposed(self) }
   end
 
   def owner_of?(message)

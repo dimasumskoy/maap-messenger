@@ -67,8 +67,8 @@ $(function () {
 });
 
 const toLastMessage = () => {
-  if (window.location.pathname.includes('/me/conversations')) {
-    let messages = document.getElementsByClassName('single-message');
+  let messages = document.getElementsByClassName('single-message');
+  if (window.location.pathname.includes('/conversations') && messages.length !== 0) {
     let lastMessage = messages[messages.length - 1];
     document.getElementById(lastMessage.id).scrollIntoView();
   }
@@ -76,7 +76,7 @@ const toLastMessage = () => {
 
 const sendByEnter = () => {
   $('textarea#message_body').on('keypress', function (e) {
-    if (e.ctrlKey) {
+    if (e.which === 13 && !e.shiftKey) {
       $('form .btn').trigger('click');
     }
   })

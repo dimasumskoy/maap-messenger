@@ -1,6 +1,0 @@
-div.conversations-list
-  h3 your conversations
-  ul.list-group.user-conversations
-    - @conversations.each do |conversation|
-      - opposed_user = conversation.opposed(current_user).username
-      li= link_to opposed_user, me_conversation_path(conversation, user_name: opposed_user), class: "list-group-item list-group-item-action conversation"
