@@ -31,7 +31,10 @@ html lang="en"
           ul.nav.navbar-nav.navbar-right.navbar-chat-menu
             li= render 'shared/search_form'
             li= link_to "contacts", me_contacts_path
-            li= link_to "#{current_user.username}", user_path(current_user), data: { user_id: current_user.id }, class: 'user-profile-link'
+            li= link_to "#{current_user.username}",
+                    me_contact_path(current_user, user_name: current_user.username),
+                    data: { user_id: current_user.id },
+                    class: 'user-profile-link'
             li= link_to "log out", destroy_user_session_path, method: :delete
 
     .container.content

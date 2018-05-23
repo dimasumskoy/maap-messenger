@@ -28,6 +28,6 @@
       i.fas.fa-long-arrow-alt-left
       | back
     - if user.id == current_user.id
-      = link_to user_path(user), class: 'btn btn-default user-account-link' do
+      = link_to me_profile_path(user), class: 'btn btn-default user-account-link' do
         i.fas.fa-pencil-alt
-        | edit account
+        | edit profile

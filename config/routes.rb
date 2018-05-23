@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     }
 
   get '/conversations/:id/:user_name', to: 'conversations#show', as: :me_conversation
-  get '/contacts', to: 'users#index', as: :me_contacts
-  get '/contacts/:id', to: 'users#show', as: :me_contact
+  get '/users/contacts/',              to: 'users#index',        as: :me_contacts
+  get '/users/:id/:user_name',         to: 'users#show',         as: :me_contact
+  get '/users/:id/profile',            to: 'users#show',         as: :me_profile
+  get '/users/:id/profile/edit',       to: 'users#edit',         as: :me_edit_profile
 
   resource :search, only: [:show], controller: 'search'
   resources :users
