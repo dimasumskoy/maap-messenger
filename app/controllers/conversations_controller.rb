@@ -1,13 +1,12 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, :save_current_user, only: [:show]
+  before_action :set_conversation, :save_current_user, :set_range, only: [:show]
 
   def index
     respond_with(@conversations = Conversation.for_user(current_user))
   end
 
   def show
-    @range = @conversation.standard_range
-    respond_with(@conversation)
+    @messages = @conversation.messages.order(:created_at)
   end
 
   def create
@@ -21,6 +20,10 @@ class ConversationsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.find(params[:id])
+  end
+
+  def set_range
+    @range = @conversation.standard_range
   end
 
   def save_current_user

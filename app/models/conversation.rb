@@ -8,6 +8,7 @@ class Conversation < ApplicationRecord
 
   has_many :messages
 
+  validates :sender_id, :recipient_id, presence: true
   validates :sender_id, uniqueness: { scope: :recipient_id }
 
   scope :between, ->(sender_id, recipient_id) do
@@ -34,6 +35,7 @@ class Conversation < ApplicationRecord
   end
 
   def messages_greater_than?(amount)
-    true if messages.size > amount
+    return true if messages.size > amount
+    false
   end
 end

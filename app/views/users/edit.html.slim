@@ -1,22 +1,22 @@
 .edit-user-account-info[id="edit-user-#{@user.id}"]
-  h3 edit account
+  h3 edit profile
   hr
   table
-    = form_for @user do |f|
+    = bootstrap_form_for @user do |f|
       tr
         td
           p
             i.far.fa-user-circle
             | name:
         td
-          = f.text_field :name, class: 'form-control'
+          = f.text_field :name, skip_label: true
       tr
         td
           p
             i.fas.fa-user-circle
             | username:
         td
-          = f.text_field :username, class: 'form-control'
+          = f.text_field :username, skip_label: true
       tr
         td
           p
@@ -24,14 +24,14 @@
               i.fas.fa-mobile-alt
             | mobile:
         td
-          = f.text_field :phone, class: 'form-control'
+          = f.text_field :phone, skip_label: true
       tr.bio
         td
           p
             i.fas.fa-info-circle
             | bio:
         td
-          = f.text_area :bio, class: 'form-control'
+          = f.text_area :bio, skip_label: true
       tr
         td
           .user-actions

@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :encrypted_body, :conversation_id)
   end
 
   def stream_message
