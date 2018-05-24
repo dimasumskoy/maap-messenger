@@ -49,7 +49,6 @@ gem 'mysql2', '~> 0.4.10'
 gem 'thinking-sphinx', '~> 4.0'
 gem 'flying-sphinx',   '~> 2.0'
 gem 'symmetric-encryption'
-gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
