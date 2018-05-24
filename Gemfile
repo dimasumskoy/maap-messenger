@@ -47,6 +47,7 @@ gem 'responders'
 gem 'gon'
 gem 'mysql2', '~> 0.4.10'
 gem 'thinking-sphinx', '~> 4.0'
+gem 'flying-sphinx',   '~> 2.0'
 gem 'symmetric-encryption'
 gem 'sidekiq'
 
