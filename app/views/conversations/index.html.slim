@@ -5,6 +5,7 @@ div.conversations-list
       - opposed_user = conversation.opposed(current_user).username
       li= link_to me_conversation_path(conversation, user_name: opposed_user), class: "list-group-item list-group-item-action conversation" do
         span.opposed-username= opposed_user
-        span.last-message-preview-long= conversation.messages.last.crop_body_length(90)
-        span.last-message-preview-medium= conversation.messages.last.crop_body_length(60)
-        span.last-message-preview-short= conversation.messages.last.crop_body_length(25)
+        - if conversation.messages.any?
+          span.last-message-preview-long= conversation.messages.last.crop_body_length(90)
+          span.last-message-preview-medium= conversation.messages.last.crop_body_length(60)
+          span.last-message-preview-short= conversation.messages.last.crop_body_length(25)
