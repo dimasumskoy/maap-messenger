@@ -30,3 +30,5 @@
 /db/sphinx
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+.env.development
+.env.production
