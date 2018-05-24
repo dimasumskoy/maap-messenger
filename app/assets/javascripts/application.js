@@ -6,7 +6,7 @@
 //= require_tree .
 
 $(function () {
-  $('.chat-brand').hover(function () {
+  $('.chat-brand, .logo').hover(function () {
     document.getElementById("application-brand").style.color = randomColor();
   }, function() { return })
 })
