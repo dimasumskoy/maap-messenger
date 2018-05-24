@@ -3,5 +3,5 @@ div.col-sm-5.users-list
   ul.list-group.users
     - @contacts.each do |contact|
       li= link_to me_contact_path(contact, user_name: contact.username), class: "list-group-item list-group-item-action" do
-        span.name= "#{contact.name}"
-        span.username= "#{contact.username}"
+        span.name= contact.name
+        span.username= contact.username

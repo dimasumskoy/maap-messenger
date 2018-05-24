@@ -15,6 +15,10 @@ class Message < ApplicationRecord
     includes(:conversation).where(['id < ?', least_id]).last(range)
   }
 
+  def crop_body_length(length)
+    "#{body[0..length]} ..."
+  end
+
   private
 
   def stream_message

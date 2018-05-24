@@ -40,6 +40,27 @@ ul.users {
   }
 }
 
+ul.user-conversations {
+  a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+  }
+  .last-message-preview-long,
+  .last-message-preview-short,
+  .last-message-preview-medium {
+    display: inline-block;
+    width: 250px;
+    color: #afafaf;
+    margin-left: 1em;
+    font-size: 0.7em;
+  }
+  .last-message-preview-short,
+  .last-message-preview-medium {
+    display: none;
+  }
+}
+
 .conversation-area {
   position: absolute;
   top: 5.5em;

@@ -18,6 +18,14 @@
     bottom: 5em !important;
     padding: 0 10%;
   }
+  ul.user-conversations {
+    .last-message-preview-long {
+      display: none;
+    }
+    .last-message-preview-medium {
+      display: inline-block;
+    }
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -57,5 +65,15 @@
   }
   .user-account-info {
     padding: 0 15px;
+  }
+  ul.user-conversations {
+    .last-message-preview-long,
+    .last-message-preview-medium {
+      display: none;
+    }
+    .last-message-preview-short {
+      display: inline-block;
+      margin-left: 0.5em;
+    }
   }
 }
