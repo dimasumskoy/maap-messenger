@@ -18,6 +18,8 @@ module Messenger
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
+    config.active_job.queue_adapter = :sidekiq
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
