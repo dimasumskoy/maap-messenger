@@ -88,5 +88,6 @@ function singleMessage(message, user) {
               <a href="/users/${message.user_id}">${message.user_username}</a>
             </div>
               <p class="message-body ${user}">${message.body}</p>
+             <span class="message-timestamps">${message.created_time}</span>
           </div>`
 }
