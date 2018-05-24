@@ -11,6 +11,7 @@ html lang="en"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
+    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"
     = javascript_include_tag "https://use.fontawesome.com/releases/v5.0.8/js/all.js", defer: true
     /! Le HTML5 shim, for IE6-8 support of HTML elements
       /![if lt IE 9]
@@ -23,7 +24,7 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand.chat-brand href="/" emichat
+          a.navbar-brand.chat-brand[id="application-brand" href="/"] emichat
           - if @conversation
             div.opposed-user
               = link_to @conversation.opposed(current_user).username, user_path(@conversation.opposed(current_user)), class: 'opposed-user-profile-link'
@@ -41,5 +42,4 @@ html lang="en"
       = render 'shared/users/user_profile', user: current_user
       = render 'shared/users/user_profile', user: @conversation.opposed(current_user) if @conversation
       .row.page-content
-        = render 'shared/alerts'
         = yield
