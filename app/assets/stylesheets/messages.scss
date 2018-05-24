@@ -75,7 +75,7 @@
     position: absolute;
     display: inline-block;
     width: 150px;
-    top: 5px;
+    top: 15px;
     left: -9em;
     text-align: right;
 
@@ -91,7 +91,7 @@
 
   p.message-body {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 15px 15px 20px 15px;
     margin: 0;
     white-space: pre-wrap;
     width: 100%;
@@ -104,5 +104,14 @@
   .opposed-user-message {
     color: #333333;
     background: #fbf1f1;
+  }
+  .message-timestamps {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+    font-size: 0.7em;
+    color: #999999;
+    user-select: none;
   }
 }
