@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'conversations#index'
-
   devise_for :users,
     controllers: { registrations: 'users/registrations' },
     path: '/',
@@ -10,6 +8,16 @@ Rails.application.routes.draw do
       sign_in:      'login',
       sign_out:     'logout'
     }
+
+  devise_scope :user do
+    authenticated :user do
+      root to: 'conversations#index'
+    end
+
+    unauthenticated do
+      root to: 'devise/sessions#new'
+    end
+  end
 
   get '/conversations/:id/:user_name',      to: 'conversations#show', as: :me_conversation
   get '/users/contacts/',                   to: 'users#index',        as: :me_contacts
@@ -26,6 +34,8 @@ Rails.application.routes.draw do
   namespace :conversation do
     get :messages_portion, to: 'messages#messages_portion'
   end
+
+  root to: 'conversations#index'
 
   mount ActionCable.server => '/cable'
 end
