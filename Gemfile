@@ -50,6 +50,7 @@ gem 'thinking-sphinx', '~> 4.0'
 gem 'flying-sphinx',   '~> 2.0'
 gem 'symmetric-encryption'
 gem 'sidekiq'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
