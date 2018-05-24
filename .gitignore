@@ -28,3 +28,5 @@
 /config/secrets.yml
 /config/*.sphinx.conf
 /db/sphinx
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
