@@ -20,15 +20,11 @@ production:
   ciphers:
   - cipher_name: aes-256-cbc
     version: 1
-    key_filename: "/etc/symmetric-encryption/messenger_production_v1.encrypted_key"
+    key_env_var: MESSENGER_PRODUCTION_V1
     iv: !binary |-
-      alZ3oEXbV/wx9Q7JdGl6yQ==
+      1YMhRnKPh6f3FF/G8ejtOg==
     key_encrypting_key:
-      encrypted_key: !binary |-
-        TrkojjwWzw5Ex1DlP9zCwWkNHEBd9Gb3ktDKZYg2GulesvB7q7LpqgX4tfZYYJu9
+      key: !binary |-
+        l/8adbfXsyDzXaiVCkG3E2nERJKtfvGxeQ/QGTr634w=
       iv: !binary |-
-        aFyVLHVhdBdXg45xdGLicQ==
-      key_encrypting_key:
-        key_filename: "/etc/symmetric-encryption/messenger_production_v1.kekek"
-        iv: !binary |-
-          3oKG3Io73belHj4gf8kEmA==
+        rz8OlsTNoynuQU+JU4P3Yg==
