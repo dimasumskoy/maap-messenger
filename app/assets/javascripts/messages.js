@@ -16,7 +16,7 @@ $(function () {
     let conversationField = $(`div#conversation-${conversationId}`);
     let previousMessagesLink = $('a.previous-messages');
     $.get({
-      url: `/conversation/messages_portion?conversation_id=${conversationId}&iteration=${count}&range=${range}`,
+      url: `/conversations/${conversationId}/messages/portion?&iteration=${count}&range=${range}`,
       data: link.serialize(),
       success: function (response, status, xhr) {
         let messages = response.reverse();

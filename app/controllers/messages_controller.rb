@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :normalize_body
+  before_action :normalize_body, only: [:create]
   before_action :set_conversation
 
   def create
@@ -11,6 +11,11 @@ class MessagesController < ApplicationController
         format.json { render json: @message, status: 422, serializer: ActiveModel::Serializer::ErrorSerializer }
       end
     end
+  end
+
+  def portion
+    @messages = @conversation.messages.portion(params[:range].to_i, params[:iteration].to_i)
+    render json: @messages
   end
 
   private

@@ -28,12 +28,10 @@ Rails.application.routes.draw do
   resource :search, only: [:show], controller: 'search'
   resources :users
   resources :conversations do
-    resources :messages, shallow: true
-  end
-
-  namespace :conversation do
-    get :messages_portion, to: 'messages#get_portion'
-    patch :expand,         to: 'messages#expand'
+    resources :messages, shallow: true do
+      get :portion, on: :collection
+      patch :expand, on: :member
+    end
   end
 
   root to: 'conversations#index'
