@@ -7,6 +7,7 @@ class Message < ApplicationRecord
   validates :body, :encrypted_body, :conversation_id, :user_id, presence: true
   validates :encrypted_body, symmetric_encryption: true
 
+  before_validation :generate_identifier
   after_create_commit :stream_message
 
   scope :ordered, -> { order(created_at: :asc) }
@@ -20,6 +21,13 @@ class Message < ApplicationRecord
   end
 
   private
+
+  def generate_identifier
+    self.identifier ||= loop do
+      new_identifier = SecureRandom.hex(5)
+      break new_identifier unless self.class.exists?(identifier: new_identifier)
+    end
+  end
 
   def stream_message
     return if self.errors.any?

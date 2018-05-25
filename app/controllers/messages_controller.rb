@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :normalize_body, only: [:create]
-  before_action :set_conversation
+  before_action :normalize_body,     only: [:create]
+  before_action :find_by_identifier, only: [:show]
+  before_action :set_conversation,   only: [:create, :portion]
 
   def create
     @message = @conversation.messages.new(message_params.merge(user: current_user))
@@ -18,7 +19,14 @@ class MessagesController < ApplicationController
     render json: @messages
   end
 
+  def show
+  end
+
   private
+
+  def find_by_identifier
+    @message = Message.find_by(identifier: params[:identifier])
+  end
 
   def set_conversation
     @conversation = Conversation.find(params[:conversation_id])
