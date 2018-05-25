@@ -1,6 +1,17 @@
 - title("emichat: message from #{@message.user.username}")
 .expanded-message[id="expanded-message-#{@message.id}"]
-  h3= @message.user.username
-  p= @message.created_at.strftime("%H:%M %d.%m.%y")
+  h3= "from: #{@message.user.username}"
+  p.datetime= @message.created_at.strftime("%H:%M %d.%m.%y")
   hr
   p= @message.body
+  hr
+  .links
+    = link_to '', class: 'btn btn-default' do
+      i.far.fa-bookmark
+      | save
+    = link_to '', class: 'btn btn-default' do
+      i.far.fa-envelope
+      | send via emal
+    = link_to '', class: 'btn btn-default' do
+      i.fas.fa-print
+      | print

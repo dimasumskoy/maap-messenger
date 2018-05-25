@@ -17,5 +17,6 @@ html lang="en"
 
   body
     .container.content
-      .row.page-content
+      .row.page-content.expanded-message-content
+        = link_to 'emichat', root_url, class: 'chat-brand'
         = yield

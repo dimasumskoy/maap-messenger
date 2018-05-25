@@ -64,6 +64,11 @@ $(function () {
       }
     }
   });
+
+  // $('.single-message').hover(function () {
+  //   let messageId = $(this).id;
+  //   document.getElementById(messageId)
+  // }, function () { return })
 });
 
 const toLastMessage = () => {

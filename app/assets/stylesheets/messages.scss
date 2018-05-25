@@ -70,6 +70,11 @@
   margin-left: 10px;
   font-size: 1.3em;
   color: #333333;
+  &:hover {
+    .message-expanding {
+      display: inline-block;
+    }
+  }
 
   .sender-name {
     position: absolute;
@@ -91,7 +96,7 @@
 
   p.message-body {
     display: inline-block;
-    padding: 15px 15px 20px 15px;
+    padding: 15px 15px 30px 15px;
     margin: 0;
     white-space: pre-wrap;
     width: 100%;
@@ -108,23 +113,68 @@
   .message-timestamps {
     display: inline-block;
     position: absolute;
-    right: 8px;
-    bottom: 5px;
-    font-size: 0.7em;
-    color: #999999;
+    right: 10px;
+    bottom: 10px;
+    font-size: 0.8em;
+    color: #bbbbbb;
     user-select: none;
   }
   .message-expanding {
-    display: inline-block;
+    display: none;
     position: absolute;
-    right: 60px;
-    bottom: 0px;
-    font-size: 0.8em;
-    color: #999999;
-    padding: 5px;
+    right: 70px;
+    bottom: 9px;
+    font-size: 0.9em;
+    color: #bbbbbb;
+    padding: 0px 5px;
+    border-radius: 3px;
+    &:hover {
+      text-decoration: none;
+      background-color: #e7e7e7;
+      color: #999999;
+    }
   }
 }
 
-.expanded-message {
+.expanded-message-content {
   padding: 1em;
+  .chat-brand {
+    font-size: 250%;
+    font-weight: bold;
+    color: #333333;
+    text-decoration: none;
+    &:hover {
+      color: #c3273f;
+    }
+  }
+  .expanded-message {
+    h3 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    p.datetime {
+      font-size: 1em;
+      color: #782220;
+    }
+    p {
+      font-size: 1.5em;
+      color: #333333;
+    }
+    .links {
+      a {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        svg {
+          margin-right: 5px;
+        }
+        &:hover {
+          background-color: #782220;
+        }
+      }
+    }
+  }
 }
