@@ -108,10 +108,19 @@
   .message-timestamps {
     display: inline-block;
     position: absolute;
-    right: 5px;
-    bottom: 3px;
+    right: 8px;
+    bottom: 5px;
     font-size: 0.7em;
     color: #999999;
     user-select: none;
+  }
+  .message-expanding {
+    display: inline-block;
+    position: absolute;
+    right: 60px;
+    bottom: 0px;
+    font-size: 0.8em;
+    color: #999999;
+    padding: 5px;
   }
 }

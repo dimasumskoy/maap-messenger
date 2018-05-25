@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   end
 
   namespace :conversation do
-    get :messages_portion, to: 'messages#messages_portion'
+    get :messages_portion, to: 'messages#get_portion'
+    patch :expand,         to: 'messages#expand'
   end
 
   root to: 'conversations#index'

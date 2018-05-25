@@ -8,5 +8,6 @@
     - else
       p.message-body.opposed-user-message
         = message.body
+    = link_to 'expand', '', class: 'message-expanding'
     span.message-timestamps[data-toggle="tooltip" data-placement="top" title="#{message.created_at.strftime("%d.%m.%Y")}"]
       = message.created_at.strftime("%H:%M:%S")
