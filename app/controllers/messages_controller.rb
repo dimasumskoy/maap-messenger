@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  layout 'message', only: [:show]
+  skip_before_action :authenticate_user!, only: [:show]
+
   before_action :normalize_body,     only: [:create]
   before_action :find_by_identifier, only: [:show]
   before_action :set_conversation,   only: [:create, :portion]
