@@ -1,4 +1,6 @@
+- title("emichat: message from #{@message.user.username}")
 .expanded-message[id="expanded-message-#{@message.id}"]
   h3= @message.user.username
+  p= @message.created_at.strftime("%H:%M %d.%m.%y")
   hr
   p= @message.body

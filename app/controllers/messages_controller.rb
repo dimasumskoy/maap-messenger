@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   layout 'message', only: [:show]
+
   skip_before_action :authenticate_user!, only: [:show]
 
   before_action :normalize_body,     only: [:create]
