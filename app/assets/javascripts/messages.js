@@ -16,7 +16,7 @@ $(function () {
     let conversationField = $(`div#conversation-${conversationId}`);
     let previousMessagesLink = $('a.previous-messages');
     $.get({
-      url: `/conversation/messages_portion?conversation_id=${conversationId}&iteration=${count}&range=${range}`,
+      url: `/conversations/${conversationId}/messages/portion?&iteration=${count}&range=${range}`,
       data: link.serialize(),
       success: function (response, status, xhr) {
         let messages = response.reverse();
@@ -87,7 +87,11 @@ function singleMessage(message, user) {
             <div class="sender-name">
               <a href="/users/${message.user_id}">${message.user_username}</a>
             </div>
-              <p class="message-body ${user}">${message.body}</p>
+            <div class="message-body ${user}">${message.markdown_body}</div>
+              <a href="${message.path_to_expand}" class="message-expanding" target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+                expand
+              </a>
              <span class="message-timestamps">${message.created_time}</span>
           </div>`
 }

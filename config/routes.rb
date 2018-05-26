@@ -24,15 +24,14 @@ Rails.application.routes.draw do
   get '/users/:id/:user_name',              to: 'users#show',         as: :me_contact
   get '/users/:id/:user_name/profile',      to: 'users#show',         as: :me_profile
   get '/users/:id/:user_name/profile/edit', to: 'users#edit',         as: :me_edit_profile
+  get '/messages/:user_name/:identifier',   to: 'messages#show',      as: :expanded_message
 
   resource :search, only: [:show], controller: 'search'
   resources :users
   resources :conversations do
-    resources :messages, shallow: true
-  end
-
-  namespace :conversation do
-    get :messages_portion, to: 'messages#messages_portion'
+    resources :messages, shallow: true do
+      get :portion, on: :collection
+    end
   end
 
   root to: 'conversations#index'
