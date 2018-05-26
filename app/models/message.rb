@@ -4,8 +4,6 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :conversation, touch: true
 
-  has_many :attachments
-
   validates :body, :encrypted_body, :conversation_id, :user_id, presence: true
   validates :encrypted_body, symmetric_encryption: true
 
