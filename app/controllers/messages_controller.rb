@@ -37,7 +37,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :encrypted_body, :conversation_id)
+    params.require(:message).permit(:body, :encrypted_body, :conversation_id, { attachments: [] })
   end
 
   def normalize_body

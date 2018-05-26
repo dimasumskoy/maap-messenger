@@ -1,7 +1,7 @@
 class Attachment < ApplicationRecord
   belongs_to :message
 
-  validates :file, presence: true
+  validates :files, presence: true
 
-  mount_uploader :file, AttachmentUploader
+  mount_uploaders :files, AttachmentUploader
 end
