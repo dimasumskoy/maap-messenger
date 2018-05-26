@@ -3,11 +3,9 @@
     div.sender-name
       = link_to message.user.username, user_path(message.user)
     - if current_user.owner_of?(message)
-      p.message-body.current-user-message
-        = message.body
+      .message-body.current-user-message = markdown(message.body)
     - else
-      p.message-body.opposed-user-message
-        = message.body
+      .message-body.opposed-user-message = markdown(message.body)
     = link_to expanded_message_path(user_name: message.user.username, identifier: message.identifier), class: 'message-expanding', target: '_blank' do
       i.fas.fa-external-link-alt
       | expand
