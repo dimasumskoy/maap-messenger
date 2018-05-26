@@ -64,11 +64,6 @@ $(function () {
       }
     }
   });
-
-  // $('.single-message').hover(function () {
-  //   let messageId = $(this).id;
-  //   document.getElementById(messageId)
-  // }, function () { return })
 });
 
 const toLastMessage = () => {
@@ -92,7 +87,11 @@ function singleMessage(message, user) {
             <div class="sender-name">
               <a href="/users/${message.user_id}">${message.user_username}</a>
             </div>
-              <p class="message-body ${user}">${message.body}</p>
+            <div class="message-body ${user}">${message.markdown_body}</div>
+              <a href="${message.path_to_expand}" class="message-expanding" target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+                expand
+              </a>
              <span class="message-timestamps">${message.created_time}</span>
           </div>`
 }
