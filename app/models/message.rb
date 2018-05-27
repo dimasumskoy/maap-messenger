@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  mount_uploaders :files, FileUploader
+
   attr_encrypted :body, type: :string, random_iv: true
 
   belongs_to :user

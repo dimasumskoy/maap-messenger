@@ -6,8 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @messages    = @conversation.messages.ordered
-    @new_message = @conversation.messages.new
+    @messages = @conversation.messages.ordered
   end
 
   def create
