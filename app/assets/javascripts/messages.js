@@ -35,14 +35,21 @@ $(function () {
   $('form#new_message').on('submit', function (e) {
     e.preventDefault();
     let form = $(this);
-    let messageBody = form.serialize();
-    $.post(form.attr('action'), messageBody, function (data) {
-      if (data.body === '') {
-        $('textarea#message_body').focus();
-      } else {
-        $(`div#conversation-${data.conversation_id}`).append(singleMessage(data, 'current-user-message'));
-        $('form#new_message textarea').val('');
-        document.getElementById(`message-${data.id}`).scrollIntoView();
+    let formData = false;
+    if (window.FormData) {
+      formData = new FormData(form[0]);
+    }
+
+    let formAction = form.attr('action');
+    $.ajax({
+      url: formAction,
+      data: formData ? formData : form.serialize(),
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST',
+      success: function (data, status, xhr) {
+        console.log(data);
       }
     })
   });

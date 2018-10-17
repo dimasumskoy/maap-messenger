@@ -12,7 +12,8 @@ class MessageSerializer < ActiveModel::Serializer
              :created_date,
              :markdown_body,
              :path_to_expand,
-             :identifier
+             :identifier,
+             :files
 
   belongs_to :user
   belongs_to :conversation
@@ -39,5 +40,9 @@ class MessageSerializer < ActiveModel::Serializer
 
   def path_to_expand
     expanded_message_path(user_name: user_username, identifier: identifier)
+  end
+
+  def files
+    object.files
   end
 end

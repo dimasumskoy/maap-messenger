@@ -3,5 +3,7 @@
     .form-group
       p= f.label :body, 'Message'
       p= f.text_area :body, class: 'form-control message-form-area', placeholder: 'message', autofocus: true
-    p= button_tag class: 'btn btn-default message-button' do
-      i.fa.fa-chevron-right
+      p= f.file_field :files, multiple: true
+      p= f.submit 'send'
+    / p= button_tag class: 'btn btn-default message-button' do
+    /   i.fa.fa-chevron-right

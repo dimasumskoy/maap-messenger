@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525133720) do
+ActiveRecord::Schema.define(version: 20180526182242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.json "files"
+    t.bigint "message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_attachments_on_message_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -33,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180525133720) do
     t.datetime "updated_at", null: false
     t.text "encrypted_body", null: false
     t.string "identifier"
+    t.json "files"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
